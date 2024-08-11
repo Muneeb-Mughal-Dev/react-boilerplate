@@ -1,0 +1,42 @@
+# dependencies
+node_modules
+.pnp
+.pnp.js
+.yarn/install-state.gz
+
+# testing
+coverage
+
+# production
+build
+dist
+
+# misc
+.DS_Store
+*.pem
+
+
+# debug
+logs
+*.log
+yarn.lock
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.pnpm-debug.log*
+lerna-debug.log*
+tsconfig.tsbuildinfo
+
+# local env files
+.env*.local
+.env
+
+.vscode
+.contentlayer
+
+# Json
+package-lock.json
+!.vscode/extensions.json
+
+# typescript
+*.tsbuildinfo
