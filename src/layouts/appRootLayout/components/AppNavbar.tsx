@@ -55,7 +55,7 @@ export const AppNavbar = () => {
             <li>
               <Link
                 to="/"
-                className="block py-2 px-3 md:p-0 text-foreground bg-blue-700 rounded md:bg-transparent md:text-blue-700"
+                className="block py-2 px-3 md:p-0 text-foreground font-bold bg-blue-700 rounded md:bg-transparent md:text-blue-700"
               >
                 Home
               </Link>
