@@ -1,11 +1,14 @@
 import { Outlet } from "react-router-dom";
 import { AppNavbar } from "@src/layouts/appRootLayout/components/AppNavbar";
+import { PageTransition } from "@src/components/animations";
 
 export const AppRootLayout = () => {
   return (
-    <div>
+    <>
       <AppNavbar />
-      <Outlet />
-    </div>
+      <PageTransition>
+        <Outlet />
+      </PageTransition>
+    </>
   );
 };
