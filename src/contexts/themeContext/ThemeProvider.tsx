@@ -11,17 +11,18 @@ interface ThemeProviderProps {
 export const ThemeProvider: React.FC<ThemeProviderProps> = ({ children }) => {
   const [theme, setTheme] = useState<"light" | "dark">("light");
 
-  const body = document.getElementsByTagName("body")[0];
+  useEffect(() => {
+    const currentTheme = storage.get(CURRENT_THEME) as "light" | "dark" | null;
+    if (currentTheme) {
+      setTheme(currentTheme);
+    }
+  }, []);
 
   useEffect(() => {
-    const currentTheme = storage.get(CURRENT_THEME);
-    if (currentTheme) {
-      setTheme(currentTheme as "light" | "dark");
-      body.classList.add(currentTheme);
-    } else {
-      body.classList.add(theme);
-    }
-  }, [body.classList, theme]);
+    const body = document.getElementsByTagName("body")[0];
+    body.classList.remove("light", "dark");
+    body.classList.add(theme);
+  }, [theme]);
 
   const themeToggler = () => {
     const newTheme = theme === "light" ? "dark" : "light";
