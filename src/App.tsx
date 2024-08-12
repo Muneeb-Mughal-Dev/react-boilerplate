@@ -1,7 +1,7 @@
 import "@src/assets/styles/index.css";
-import { BrowserRouter } from "react-router-dom";
-import { PageModule, Pages } from "./hooks/useRouter";
-import { Router } from "./routes/routes";
+import { RouterProvider } from "react-router-dom";
+import { useRouter } from "@src/hooks/useRouter";
+import { router } from "@src/routes/routes";
 
 export const App = () => {
   const pagesRaw = import.meta.glob("./pages/**/!(*.test.[jt]sx)*.([jt]sx)", {
@@ -11,11 +11,13 @@ export const App = () => {
     Object.entries(pagesRaw).map(([key, module]) => [key, module as PageModule])
   );
 
-  // const routes = useRouter(pages)
+  const routes = useRouter(pages);
+  const routerInstance = router(routes);
 
   return (
-    <BrowserRouter>
-      <Router pages={pages} />
-    </BrowserRouter>
+    <RouterProvider
+      router={routerInstance}
+      fallbackElement={<p>Loading...</p>}
+    />
   );
 };

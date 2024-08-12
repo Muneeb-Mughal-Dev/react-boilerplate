@@ -1,29 +1,4 @@
-import React from "react";
 import { normalizePath } from "@src/utils";
-
-export type PageModule = {
-  default: React.ComponentType;
-};
-
-export type Pages = {
-  [key: string]: PageModule;
-};
-
-export interface RouterProps {
-  pages: Pages;
-}
-
-export interface Route {
-  path: string;
-  element: React.ComponentType;
-  layout?: string;
-  children?: Route[];
-}
-
-export interface NestedRoutes {
-  element?: React.ComponentType;
-  children: Route[] | NestedRoutes[];
-}
 
 const groupRoutes = (pages: Pages): Route[] => {
   const routes: Route[] = [];
@@ -39,7 +14,6 @@ const groupRoutes = (pages: Pages): Route[] => {
       }
       currentPath += `/${segment}`;
     });
-    console.log("currentPath==>", currentPath);
     if (!key.endsWith("layout.tsx") && pages[key].default) {
       routes.push({
         path: currentPath,
@@ -52,10 +26,10 @@ const groupRoutes = (pages: Pages): Route[] => {
   return routes;
 };
 
-const nestRoutes = (routes: Route[], pages: Pages): NestedRoutes => {
-  const nestedRoutes: NestedRoutes = { children: [] };
+const nestRoutes = (routes: Route[], pages: Pages): GroupLayoutRoute => {
+  const nestedRoutes: GroupLayoutRoute = { children: [], element: null };
 
-  const addLayouts: NestedRoutes[] = [];
+  const addLayouts: GroupRoute[] = [];
 
   Object.keys(pages).forEach((key) => {
     const path = normalizePath(key);
@@ -81,7 +55,7 @@ const nestRoutes = (routes: Route[], pages: Pages): NestedRoutes => {
   return nestedRoutes;
 };
 
-export const useRouter = (pages: Pages): NestedRoutes => {
+export const useRouter = (pages: Pages): GroupLayoutRoute => {
   const routes = groupRoutes(pages);
   const nestedRoutes = nestRoutes(routes, pages);
 
