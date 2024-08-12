@@ -1,6 +1,6 @@
 import { ElementType, useRef } from "react";
-import { cn } from "@src/utils/functions/cn";
-import { ripple as rippleEffect } from "@src/utils/functions/ripple";
+import { cn } from "@src/utils/styles/cn";
+import { ripple as rippleEffect } from "@src/utils/styles/ripple";
 
 interface ButtonProps extends Children {
   as?: ElementType;

@@ -2,6 +2,7 @@ import "@src/assets/styles/index.css";
 import { RouterProvider } from "react-router-dom";
 import { useRouter } from "@src/hooks/useRouter";
 import { router } from "@src/routes/routes";
+import { ThemeProvider } from "./contexts";
 
 export const App = () => {
   const pagesRaw = import.meta.glob("./pages/**/!(*.test.[jt]sx)*.([jt]sx)", {
@@ -15,9 +16,11 @@ export const App = () => {
   const routerInstance = router(routes);
 
   return (
-    <RouterProvider
-      router={routerInstance}
-      fallbackElement={<p>Loading...</p>}
-    />
+    <ThemeProvider>
+      <RouterProvider
+        router={routerInstance}
+        fallbackElement={<p>Loading...</p>}
+      />
+    </ThemeProvider>
   );
 };

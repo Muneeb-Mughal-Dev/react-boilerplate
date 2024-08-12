@@ -1,5 +1,5 @@
 import { forwardRef } from "react";
-import { APP_TITLE } from "@src/constants/variables";
+import { Env } from "@src/constants";
 import { Link } from "react-router-dom";
 // import { Image } from "@src/components/ui";
 
@@ -12,7 +12,7 @@ export const Logo = forwardRef(() => {
         className="w-8 lg:w-10"
       /> */}
       <h1 className="capitalize text-xl font-syne font-semibold">
-        {APP_TITLE}
+        {Env.appTitle}
       </h1>
     </Link>
   );

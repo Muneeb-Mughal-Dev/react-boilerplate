@@ -1,14 +1,13 @@
-import React, { FormEvent, ReactNode } from "react";
+import React, { FormEvent } from "react";
 
-import { cn } from "@src/utils/functions/cn";
+import { cn } from "@src/utils/styles/cn";
 import { Button } from "@src/components/ui";
 
-interface FormProps {
+interface FormProps extends Children {
   title?: string;
   button?: boolean;
   buttonTitle?: string;
   className?: string;
-  children: ReactNode;
   handleSubmit: (e: FormEvent<HTMLFormElement>) => void;
 }
 

@@ -1,23 +1,32 @@
-import { useEffect, useState } from "react";
-import { CURRENT_THEME } from "@src/libs/storage";
+import { ReactNode, useEffect, useState } from "react";
+
+import { storage } from "@src/utils/storage";
+import { CURRENT_THEME } from "@src/utils/storage/variables";
 import { ThemeContext } from "@src/contexts/themeContext/ThemeContext";
 
-export const ThemeProvider = ({ children }: Children) => {
-  const [theme, setTheme] = useState<Theme>("dark");
+interface ThemeProviderProps {
+  children: ReactNode;
+}
+
+export const ThemeProvider: React.FC<ThemeProviderProps> = ({ children }) => {
+  const [theme, setTheme] = useState<"light" | "dark">("light");
+
+  const body = document.getElementsByTagName("body")[0];
 
   useEffect(() => {
-    if (typeof window !== undefined) {
-      const currentTheme = window.localStorage.getItem(CURRENT_THEME);
-      if (currentTheme) {
-        setTheme(currentTheme as "light" | "dark");
-      }
+    const currentTheme = storage.get(CURRENT_THEME);
+    if (currentTheme) {
+      setTheme(currentTheme as "light" | "dark");
+      body.classList.add(currentTheme);
+    } else {
+      body.classList.add(theme);
     }
-  }, []);
+  }, [body.classList, theme]);
 
   const themeToggler = () => {
     const newTheme = theme === "light" ? "dark" : "light";
     setTheme(newTheme);
-    window.localStorage.setItem(CURRENT_THEME, newTheme);
+    storage.set(CURRENT_THEME, newTheme);
   };
 
   return (

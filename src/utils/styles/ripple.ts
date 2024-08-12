@@ -3,7 +3,7 @@ import { RefObject } from "react";
 export const ripple = (
   e: React.MouseEvent<HTMLButtonElement>,
   btnRef: RefObject<HTMLButtonElement>,
-  color: string = "bg-primary",
+  color: string = "bg-white/30"
 ) => {
   const btn = btnRef.current;
 
@@ -22,7 +22,7 @@ export const ripple = (
     "inset-0",
     "scale-0",
     "rounded-full",
-    color,
+    color
   );
 
   btn.appendChild(circle);

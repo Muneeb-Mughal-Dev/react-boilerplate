@@ -1,8 +1,5 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
-
 /* ------------------------ MARQUEE-SLIDER-STYLES ------------------------ */
+
 @layer utilities {
   .marquee {
     @apply max-w-max overflow-hidden;
