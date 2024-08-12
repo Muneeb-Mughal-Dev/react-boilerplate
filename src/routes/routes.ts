@@ -1,5 +1,6 @@
 import React from "react";
 import { createBrowserRouter, RouteObject } from "react-router-dom";
+import { NotFound } from "@src/components/pages/notFound/NotFound";
 
 export const router = (routes: GroupLayoutRoute) => {
   const buildRoutes = (routes: GroupRoute[]): RouteObject[] => {
@@ -21,7 +22,10 @@ export const router = (routes: GroupLayoutRoute) => {
   const baseLayout: RouteObject[] = [
     {
       element: React.createElement(routes.element),
-      children: routesArray,
+      children: [
+        ...routesArray,
+        { path: "*", element: React.createElement(NotFound) },
+      ],
     },
   ];
 
