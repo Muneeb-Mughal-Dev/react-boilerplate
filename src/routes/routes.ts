@@ -1,6 +1,6 @@
 import React from "react";
 import { createBrowserRouter, RouteObject } from "react-router-dom";
-import { NotFound } from "@src/components/notFound/NotFound";
+import { NotFound } from "@src/components/pages/notFound/NotFound";
 
 export const router = (routes: GroupLayoutRoute) => {
   const buildRoutes = (routes: GroupRoute[]): RouteObject[] => {

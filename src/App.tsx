@@ -1,8 +1,8 @@
-import "@src/assets/styles/index.css";
 import { RouterProvider } from "react-router-dom";
-import { useRouter } from "@src/hooks/useRouter";
+
 import { router } from "@src/routes/routes";
-import { ThemeProvider } from "./contexts";
+import { useRouter } from "@src/hooks/useRouter";
+import { ThemeProvider } from "@src/contexts";
 
 export const App = () => {
   const pagesRaw = import.meta.glob("./pages/**/!(*.test.[jt]sx)*.([jt]sx)", {
