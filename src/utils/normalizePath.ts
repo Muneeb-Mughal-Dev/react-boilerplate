@@ -1,22 +1,15 @@
 export const normalizePath = (path: string): string => {
-  let normalizedPath = path
-    .replace(/^\.\/pages/, "")
-    .replace(/\.(t|j)sx?$/, "");
+  const normalizedPath = path
+    .replace(/^\.\/pages/, "") // Remove the base folder
+    .replace(/\.(t|j)sx?$/, "") // Remove the file extension
+    .replace(/\/page$/, "") // Remove /page for routes
+    // .replace(/\/layout$/, "") // Remove /layout for routes
+    .replace(/\[(?:[.]{3})?(\w+?)\]/g, (_match, param) => `:${param}`) // Dynamic route
+    .replace(/\[\[([.\w]+?)\]\]/g, (_match, param) => `:${param}*`) // Catch-all route
+    .replace(/\/$/, ""); // Remove trailing slash
 
-  normalizedPath = normalizedPath.replace(/\/index$/i, "/");
-
-  normalizedPath = normalizedPath.replace(
-    /\[(?:[.]{3})?(\w+?)\]/g,
-    (_match, param) => `:${param}`
-  );
-
-  normalizedPath = normalizedPath.replace(
-    /\[\[([.\w]+?)\]\]/g,
-    (_match, param) => `:${param}*`
-  );
-
-  if (normalizedPath.endsWith("/") && normalizedPath !== "/") {
-    normalizedPath = normalizedPath.slice(0, -1);
+  if (normalizedPath === "") {
+    return "/";
   }
 
   return normalizedPath;
