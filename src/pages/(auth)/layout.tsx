@@ -1,10 +1,5 @@
-import { Outlet } from "react-router-dom";
+import { AppAuthLayout } from "@src/layouts";
 
 export default function AuthLayout() {
-  return (
-    <div>
-      <nav>auth</nav>
-      <Outlet />
-    </div>
-  );
+  return <AppAuthLayout />;
 }

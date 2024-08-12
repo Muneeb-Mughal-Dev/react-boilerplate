@@ -1,10 +1,5 @@
-import { Outlet } from "react-router-dom";
+import { AppBaseLayout } from "@src/layouts";
 
 export default function BaseLayout() {
-  return (
-    <div>
-      <nav>base</nav>
-      <Outlet />
-    </div>
-  );
+  return <AppBaseLayout />;
 }

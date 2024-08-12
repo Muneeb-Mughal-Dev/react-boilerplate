@@ -1,10 +1,5 @@
-import { Outlet } from "react-router-dom";
+import { AppRootLayout } from "@src/layouts";
 
 export default function RootLayout() {
-  return (
-    <div>
-      <nav>root</nav>
-      <Outlet />
-    </div>
-  );
+  return <AppRootLayout />;
 }
