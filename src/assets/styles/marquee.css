@@ -1,0 +1,43 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ------------------------ MARQUEE-SLIDER-STYLES ------------------------ */
+@layer utilities {
+  .marquee {
+    @apply max-w-max overflow-hidden;
+  }
+
+  .marquee[data-direction="right"] {
+    --_animation-direction: reverse;
+  }
+
+  .marquee[data-direction="left"] {
+    --_animation-direction: forwards;
+  }
+
+  .marquee_inner {
+    @apply flex gap-6 flex-wrap py-3;
+  }
+
+  .marquee[data-animated="true"] .marquee_inner {
+    @apply w-max flex-nowrap animate-marquee;
+  }
+
+  .marquee[data-animated="true"] {
+    -webkit-mask: linear-gradient(
+      90deg,
+      transparent,
+      white 20%,
+      white 80%,
+      transparent
+    );
+    mask: linear-gradient(
+      90deg,
+      transparent,
+      white 20%,
+      white 80%,
+      transparent
+    );
+  }
+}

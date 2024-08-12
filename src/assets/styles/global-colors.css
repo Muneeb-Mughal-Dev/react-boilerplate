@@ -1,0 +1,58 @@
+/* ------------------------ GLOBAL-VARIABLES-FOR-THEME ------------------------ */
+
+:root {
+  --background: 0, 0%, 100%;
+  --background-variant-lighter: 0, 0%, 95%;
+  --background-variant-light: 0, 0%, 90%;
+  --background-variant-dark: 0, 0%, 85%;
+
+  --foreground: 0, 0%, 0%;
+  --foreground-variant-lighter: 0, 0%, 85%;
+  --foreground-variant-light: 0, 0%, 50%;
+  --foreground-variant-dark: 0, 0%, 30%;
+
+  --primary: 203, 75%, 29%;
+  --primary-variant-dark: 193, 100%, 22%;
+  --primary-variant-light: 192, 100%, 31%;
+
+  --secondary: 188.9, 148.3%, 26.6%;
+  --secondary-variant-light: 188.9, 98.16%, 35.04%;
+  --secondary-variant-dark: 188.9, 99.01%, 21.84%;
+
+  --destructive: 0, 100%, 50%;
+
+  --muted: 210, 40%, 96.1%;
+  --muted-foreground: 215.4, 16.3%, 46.9%;
+
+  --popover: 0, 0%, 0%, 30%;
+
+  --info: 190, 90%, 50%;
+  --success: 152, 69%, 31%;
+  --warning: 45, 100%, 51%;
+}
+.dark {
+  --background: 220, 11%, 11%;
+  --background-variant-light: 220, 11%, 10%;
+  --background-variant-lighter: 220, 11%, 8%;
+  --background-variant-dark: 220, 11%, 7%;
+
+  --foreground: 0, 0%, 100%;
+  --foreground-variant-lighter: 0, 0%, 30%;
+  --foreground-variant-light: 0, 0%, 50%;
+  --foreground-variant-dark: 0, 0%, 85%;
+
+  --primary: 203, 75%, 29%;
+  --primary-variant-dark: 193, 100%, 22%;
+  --primary-variant-light: 192, 100%, 31%;
+
+  --secondary: 188.9, 148.3%, 26.6%;
+  --secondary-variant-light: 188.9, 98.16%, 35.04%;
+  --secondary-variant-dark: 188.9, 99.01%, 21.84%;
+
+  --destructive: 0, 63%, 31%;
+
+  --muted: 223, 47%, 11%;
+  --muted-foreground: 215.4, 16.3%, 56.9%;
+
+  --popover: 240, 3.8%, 46.1%, 10%;
+}

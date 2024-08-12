@@ -1,3 +1,20 @@
+@import url("https://fonts.googleapis.com/css2?family=Catamaran:wght@100..900&family=Raleway:ital,wght@0,100..900;1,100..900&display=swap");
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@import "./marquee.css";
+@import "./global-colors.css";
+
+/* ------------------------ GLOBAL-STYLES ------------------------ */
+
+body {
+  @apply bg-background text-foreground font-body font-normal transition-all ease-out duration-150;
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+}
