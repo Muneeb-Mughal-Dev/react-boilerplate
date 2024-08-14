@@ -10,7 +10,7 @@
 /* ------------------------ GLOBAL-STYLES ------------------------ */
 
 body {
-  @apply bg-background text-foreground font-body font-normal transition-all ease-out duration-150;
+  @apply bg-background text-foreground font-body font-normal transition-all ease-out duration-150 antialiased;
 }
 
 @layer utilities {

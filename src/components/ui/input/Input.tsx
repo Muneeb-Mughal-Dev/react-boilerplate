@@ -54,10 +54,10 @@ export const Input: React.FC<InputProps> = ({
   return (
     <>
       {type !== "checkbox" ? (
-        <div className="w-full flex flex-col gap-1.5">
+        <div className="w-full flex flex-col gap-2.5">
           <label
             htmlFor={name}
-            className={`flex items-center justify-between text-sm tracking-wide ${
+            className={`flex items-center justify-between font-primary font-medium text-sm tracking-wide ${
               error.name === name && error.state
                 ? "text-dander"
                 : "text-foreground"
@@ -83,7 +83,7 @@ export const Input: React.FC<InputProps> = ({
               defaultValue={defaultValue}
               type={type === "password" ? password : type}
               autoComplete={type === "password" ? "new-password" : "off"}
-              className={`block w-full rounded-sm border px-2 py-1.5 pl-4 bg-transparent text-foreground shadow-md placeholder:text-foreground-light sm:text-sm sm:leading-6 ${
+              className={`block w-full rounded-lg border px-2 py-1.5 pl-4 bg-transparent text-foreground shadow-md placeholder:text-foreground-light sm:text-sm sm:leading-6 ${
                 error.name === name && error.state
                   ? "border-dander"
                   : "border-foreground-light"

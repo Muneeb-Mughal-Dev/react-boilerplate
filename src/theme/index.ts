@@ -30,7 +30,7 @@ export const colors = {
     200: "hsl(var(--secondary-variant-dark), <alpha-value>)",
   },
 
-  destructive: {
+  danger: {
     DEFAULT: "hsl(var(--destructive), <alpha-value>)",
   },
 

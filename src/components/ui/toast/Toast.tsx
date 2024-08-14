@@ -48,7 +48,7 @@ export const Toast: React.FC<ToastProps> = ({
         </div>
       </div>
       {close && (
-        <Button size="xs" color="default" onClick={handleClose}>
+        <Button size="xs" color="muted" onClick={handleClose}>
           <X size={18} />
         </Button>
       )}

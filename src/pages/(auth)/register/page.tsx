@@ -1,5 +1,7 @@
+import { Login } from "@src/components/pages/auth";
+
 const Register = () => {
-  return <div>Register page</div>;
+  return <Login />;
 };
 
 export default Register;

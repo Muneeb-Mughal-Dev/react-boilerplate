@@ -27,6 +27,9 @@ declare interface GroupLayoutRoute {
 declare interface Children {
   children: ReactNode;
 }
+declare interface ChildrenWithElement extends Children {
+  as?: ElementType;
+}
 
 declare type Theme = "light" | "dark";
 
