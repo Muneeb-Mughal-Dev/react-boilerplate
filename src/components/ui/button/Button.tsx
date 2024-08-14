@@ -1,9 +1,8 @@
-import { ElementType, useRef } from "react";
+import { useRef } from "react";
 import { cn } from "@src/utils/styles/cn";
 import { ripple as rippleEffect } from "@src/utils/styles/ripple";
 
-interface ButtonProps extends Children {
-  as?: ElementType;
+interface ButtonProps extends ChildrenWithElement {
   to?: string;
   icon?: React.ReactNode | string;
   type?: "button" | "submit";
@@ -15,10 +14,9 @@ interface ButtonProps extends Children {
     | "primary"
     | "success"
     | "warning"
-    | "default"
     | "secondary";
   rounded?: "xs" | "sm" | "md" | "lg" | "xl" | "2xl" | "3xl" | "full" | "none";
-  variant?: "solid" | "outline" | "default";
+  variant?: "solid" | "outline";
   shadow?: boolean;
   onClick?: () => void;
   fullWidth?: boolean;
@@ -50,94 +48,54 @@ export const Button: React.FC<ButtonProps> = ({
 }) => {
   const btnRef = useRef<HTMLButtonElement>(null);
 
-  const btnSize =
-    size === "xs"
-      ? "px-3 py-2 text-xs"
-      : size === "sm"
-        ? "px-3 py-2 text-sm"
-        : size === "md"
-          ? "px-5 py-2.5 text-sm"
-          : size === "lg"
-            ? "px-5 py-3 text-base"
-            : size === "xl"
-              ? "px-6 py-3.5 text-base"
-              : null;
+  const styles = {
+    base: "relative inline-flex border items-center gap-1.5 hover:gap-0.5 font-primary min-w-max overflow-hidden font-medium tracking-wider hover:bg-opacity-85 transition-all ease-out duration-300",
+    size: {
+      xs: "px-3 py-2 text-xs",
+      sm: "px-3 py-2 text-sm",
+      md: "px-5 py-2.5 text-sm",
+      lg: "px-5 py-3 text-base",
+      xl: "px-6 py-3.5 text-base",
+    },
+    color: {
+      info: "bg-info text-white",
+      muted: "bg-muted text-muted-foreground",
+      danger: "bg-destructive text-white",
+      primary:
+        "bg-primary text-white before:absolute before:inset-0 before:-z-10 before:rounded-[calc(theme(borderRadius.lg)-1px)] before:bg-primary",
+      success: "bg-success text-white",
+      warning: "bg-warning text-white",
+      secondary: "bg-secondary text-white",
+    },
+    variant: {
+      solid: `bg-${color} text-white border-${color}`,
+      outline: `border-${color} bg-transparent text-${color} hover:bg-${color} hover:text-white`,
+    },
+    rounded: {
+      xs: "rounded",
+      sm: "rounded-sm",
+      md: "rounded-md",
+      lg: "rounded-lg",
+      xl: "rounded-xl",
+      "2xl": "rounded-2xl",
+      "3xl": "rounded-3xl",
+      full: "rounded-full",
+      none: "rounded-none",
+    },
+    disabled:
+      "disabled:cursor-not-allowed disabled:opacity-50 disabled:shadow-none before:disabled:shadow-none after:disabled:shadow-none",
+    shadow: "shadow-md shadow-primary-foreground",
+    fullWidth: "w-full justify-center",
+  };
 
   const rippleClr = rippleColor ? rippleColor : "bg-white/30";
 
-  const btnColor =
-    color === "primary" && variant === "default"
-      ? "bg-muted/20 text-foreground"
-      : color === "primary" && variant === "solid"
-        ? "bg-primary text-white"
-        : color === "primary" && variant === "outline"
-          ? "border border-primary text-primary hover:bg-primary hover:text-white"
-          : color === "secondary" && variant === "solid"
-            ? "bg-secondary text-white"
-            : color === "secondary" && variant === "outline"
-              ? "border border-secondary text-secondary hover:bg-secondary hover:text-white"
-              : color === "danger" && variant === "solid"
-                ? "bg-destructive text-white"
-                : color === "danger" && variant === "outline"
-                  ? "border border-destructive text-destructive hover:bg-destructive hover:text-white"
-                  : color === "muted" && variant === "solid"
-                    ? "bg-muted text-muted-foreground"
-                    : color === "muted" && variant === "outline"
-                      ? "border border-muted-foreground text-muted-foreground hover:bg-muted hover:text-muted-foreground"
-                      : color === "success" && variant === "solid"
-                        ? "bg-success text-white"
-                        : color === "success" && variant === "outline"
-                          ? "border border-success text-success hover:bg-success hover:text-white"
-                          : color === "warning" && variant === "solid"
-                            ? "bg-warning text-white"
-                            : color === "warning" && variant === "outline"
-                              ? "border border-warning text-warning hover:bg-warning hover:text-white"
-                              : color === "info" && variant === "solid"
-                                ? "bg-info text-white"
-                                : color === "info" && variant === "outline"
-                                  ? "border border-info text-info hover:bg-info hover:text-white"
-                                  : color === "default" && variant === "solid"
-                                    ? "bg-muted text-foreground"
-                                    : color === "default" &&
-                                        variant === "outline"
-                                      ? "border border-foreground text-foreground hover:bg-muted hover:text-foreground"
-                                      : null;
-
-  const btnRounded =
-    rounded === "xs"
-      ? "rounded"
-      : rounded === "sm"
-        ? "rounded-sm"
-        : rounded === "md"
-          ? "rounded-md"
-          : rounded === "lg"
-            ? "rounded-lg"
-            : rounded === "xl"
-              ? "rounded-xl"
-              : rounded === "2xl"
-                ? "rounded-2xl"
-                : rounded === "3xl"
-                  ? "rounded-3xl"
-                  : rounded === "none"
-                    ? "rounded-none"
-                    : rounded === "full"
-                      ? "rounded-full"
-                      : null;
-
-  const btnShadow = shadow ? "shadow-md shadow-primary-foreground" : "";
-
-  const width = fullWidth ? "w-full" : "";
-
-  const btnDisabled = disabled
-    ? "cursor-not-allowed disabled:opacity-50 disabled:shadow-none"
-    : "";
-
   const handleClick = (e: React.MouseEvent<HTMLButtonElement>) => {
-    if (onClick) {
-      if (ripple) {
-        rippleEffect(e, btnRef, rippleClr);
+    if (ripple) {
+      rippleEffect(e, btnRef, rippleClr);
+      if (onClick) {
+        onClick();
       }
-      onClick();
     }
   };
 
@@ -150,7 +108,14 @@ export const Button: React.FC<ButtonProps> = ({
       type={type}
       {...rest}
       className={cn(
-        `relative inline-flex items-center gap-1 font-montserrat min-w-max overflow-hidden font-medium tracking-wider hover:bg-opacity-85 transition-all ease-out duration-200 ${btnRounded} ${btnShadow} ${btnSize} ${btnColor} ${width} ${btnDisabled}`,
+        styles.base,
+        styles.size?.[size],
+        styles.color?.[color],
+        styles.variant?.[variant],
+        styles.rounded?.[rounded],
+        styles.disabled,
+        shadow && styles.shadow,
+        fullWidth && styles.fullWidth,
         className
       )}
     >

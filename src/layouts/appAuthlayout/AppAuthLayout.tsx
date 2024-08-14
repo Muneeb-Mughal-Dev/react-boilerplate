@@ -4,8 +4,9 @@ import { PageTransition } from "@src/components/animations";
 export const AppAuthLayout = () => {
   return (
     <PageTransition>
-      <h1>auth layout</h1>
-      <Outlet />
+      <section className="w-full h-svh sm:h-lvh flex items-center justify-center">
+        <Outlet />
+      </section>
     </PageTransition>
   );
 };

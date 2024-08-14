@@ -1,6 +1,7 @@
 import { Minus, Plus } from "lucide-react";
 import { useEffect, useState } from "react";
-import { Input, Button } from "@src/components/ui";
+import { Input } from "@src/components/ui/input";
+import { Button } from "@src/components/ui/button";
 
 export interface InputGroupProps {
   name: string;

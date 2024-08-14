@@ -8,7 +8,7 @@ interface FormProps extends Children {
   button?: boolean;
   buttonTitle?: string;
   className?: string;
-  handleSubmit: (e: FormEvent<HTMLFormElement>) => void;
+  handleSubmit?: (e: FormEvent<HTMLFormElement>) => void;
 }
 
 export const Form: React.FC<FormProps> = ({
