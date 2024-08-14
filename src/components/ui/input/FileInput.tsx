@@ -36,6 +36,7 @@ export const FileInput: React.FC<FileInputProps> = ({
       //     headers: { "Content-Type": "multipart/form-data" },
       //   }
       // );
+      setImageUrl("url.result");
       // setImageUrl(url.result);
     }
   }, []);

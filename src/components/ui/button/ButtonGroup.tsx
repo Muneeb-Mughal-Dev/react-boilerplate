@@ -28,7 +28,7 @@ export const ButtonGroup = () => {
             size="xs"
             rounded="lg"
             variant="solid"
-            color={active.id === tab.id ? "primary" : "default"}
+            color={active.id === tab.id ? "primary" : "muted"}
             onClick={() => setActive({ ...active, id: tab.id })}
           >
             {tab.button}
